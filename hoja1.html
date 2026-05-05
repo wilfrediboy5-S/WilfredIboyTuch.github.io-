@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f8f9fa;
+        scroll-behavior: smooth;
+        color: #333;
+    }
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 8%;
+        background: rgb(232, 118, 12);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+        height: 90px;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    .logo-container img {
+        height: 80px; 
+        width: auto;
+        display: block;
+    }
+
+    .navbar ul {
+        display: flex;
+        list-style: none;
+        gap: 25px;
+    }
+
+    .navbar a {
+        text-decoration: none;
+        color: #2c3e50;
+        font-weight: 600;
+        transition: color 0.3s;
+    }
+
+    .navbar a:hover { color: #e67e22; }
+
+    .hero {
+        height: 60vh;
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                    url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1600') center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+    }
+
+    .hero h1 { font-size: 3.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+
+    .main-container {
+        display: flex;
+        max-width: 1400px;
+        margin: auto;
+        padding: 40px 5%;
+        gap: 30px;
+    }
+
+    .productos-grid {
+        flex: 3;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    .card img { width: 100%; height: 180px; object-fit: cover; }
+
+    .card h3 { margin: 15px 0 5px; }
+
+    .card p { color: #E67E22; font-weight: bold; font-size: 1.2rem; margin-bottom: 15px; }
+
+    .card button {
+        background: #E67E22;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    .carrito-panel {
+        flex: 1;
+        background: white;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        height: fit-content;
+        position: sticky;
+        top: 110px;
+    }
+    .section {
+        padding: 80px 8%;
+        background: white;
+    }
+
+    .equipo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+        justify-content: center;
+    }
+
+    .miembro-card { text-align: center; }
+
+    .miembro-card img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        border: 4px solid #E67E22;
+        object-fit: cover;
+        margin-bottom: 15px;
+    }
+
+    .sobre-section {
+        background: #fdf2e9;
+        padding: 80px 8%;
+    }
+
+    .grid-mision-vision {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    @media (max-width: 900px) {
+        .main-container, .grid-mision-vision { flex-direction: column; grid-template-columns: 1fr; }
+        .navbar ul { display: none; }
+    }
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="#inicio" class="logo-container">
+        <img src="YaComí.png.jpeg" alt="YaComí Logo" height="50%" width="100%">
+    </a>
+    <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#comida">Menú</a></li>
+        <li><a href="#equipo">Equipo</a></li>
+        <li><a href="#sobre">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+</nav>
+
+<header class="hero" id="inicio">
+    <div>
+        <h1>¡Tu comida favorita a un clic!</h1>
+        <p>Sabor 100% chapín, entrega en minutos. 🚀</p>
+    </div>
+</header>
+
+<section class="main-container" id="comida">
+    <div class="productos-grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500">
+            <div class="card-info">
+                <h3>Hamburguesa Clásica</h3>
+                <p>Q65.00</p>
+                <button onclick="agregar('Hamburguesa', 65)">Añadir al Carrito</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?q=80&w=1176&auto=format&fit=crop">
+            <div class="card-info">
+                <h3>Pizza Pepperoni</h3>
+                <p>Q80.00</p>
+                <button onclick="agregar('Pizza', 80)">Añadir al Carrito</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1518013431117-eb1465fa5752?q=80&w=1170&auto=format&fit=crop">
+            <div class="card-info">
+                <h3>Papas Fritas</h3>
+                <p>Q35.00</p>
+                <button onclick="agregar('Papas', 35)">Añadir al Carrito</button>
+            </div>
+        </div>
+    </div>
+
+    <aside class="carrito-panel">
+        <h2 style="margin-top:0">🛒 Tu Pedido</h2>
+        <div id="lista-carrito">
+            <p style="color:#888; text-align:center">Carrito vacío</p>
+        </div>
+        <hr>
+        <div style="display:flex; justify-content:space-between; font-weight:bold; font-size:1.3rem; color:#E67E22">
+            <span>Total:</span>
+            <span>Q<span id="total-precio">0.00</span></span>
+        </div>
+        <button style="width:100%; padding:15px; background:#2c3e50; color:white; border:none; border-radius:10px; margin-top:20px; cursor:pointer; font-weight:bold;" onclick="comprar()">Finalizar Compra</button>
+    </aside>
+</section>
+
+<section class="section" id="equipo">
+    <h2 style="text-align:center">Nuestro Equipo</h2>
+    <div class="equipo-grid">
+        <div class="miembro-card"><img src="Justyn.jpeg" alt="Justyn Tax"><h3>Justyn Tax</h3></div>
+        <div class="miembro-card"><img src="Jacqueline.jpeg"><h3>Jacquelin Guarcas</h3></div>
+        <div class="miembro-card"><img src="Dulce.jpeg"><h3>Dulce Gonzalez</h3></div>
+        <div class="miembro-card"><img src="Justin.jpeg"><h3>Justin Gonzalez</h3></div>
+        <div class="miembro-card"><img src="Esdras.jpeg"><h3>Esdras Hernández</h3></div>
+        <div class="miembro-card"><img src="Wilfred.jpeg"><h3>Wilfred Iboy</h3></div>
+        <div class="miembro-card"><img src="Shaday.jpeg"><h3>Shaday Sucuqui</h3></div>
+    </div>
+</section>
+
+<section class="sobre-section" id="sobre">
+    <div class="grid-mision-vision">
+        <div>
+            <h2 style="color:#E67E22">VISIÓN</h2>
+            <p>Convertir a Ya Comí en la plataforma de delivery más confiable e innovadora de Guatemala, destacándonos por transformar la manera en que las personas disfrutan su comida diaria.</p>
+        </div>
+        <div>
+            <h2 style="color:#E67E22">MISIÓN</h2>
+            <p>Facilitar el acceso a alimentos de calidad mediante un servicio de entrega rápido, seguro y accesible, conectando a los chapines con sus comidas favoritas.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="contacto">
+    <h2 style="text-align:center">Contacto</h2>
+    <form onsubmit="enviar(event)" style="max-width: 500px; margin: auto;">
+        <input type="text" placeholder="Nombre" required style="width:100%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ddd; box-sizing: border-box;">
+        <input type="email" placeholder="Correo" required style="width:100%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ddd; box-sizing: border-box;">
+        <textarea placeholder="Mensaje" rows="4" style="width:100%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ddd; box-sizing: border-box;"></textarea>
+        <button type="submit" style="background:#E67E22; color:white; border:none; padding:12px 30px; border-radius:8px; cursor:pointer; font-weight:bold;">Enviar Mensaje</button>
+    </form>
+</section>
+
+<script>
+    let carrito = [];
+
+    function agregar(nombre, precio) {
+        let item = carrito.find(p => p.nombre === nombre);
+        if (item) { item.cantidad++; } 
+        else { carrito.push({ nombre, precio, cantidad: 1 }); }
+        render();
+    }
+
+    function render() {
+        let lista = document.getElementById("lista-carrito");
+        let total = 0;
+        if (carrito.length === 0) {
+            lista.innerHTML = '<p style="color:#888; text-align:center">Carrito vacío</p>';
+        } else {
+            lista.innerHTML = "";
+            carrito.forEach((item, i) => {
+                let sub = item.precio * item.cantidad;
+                total += sub;
+                lista.innerHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:10px">
+                    <span>${item.nombre} (x${item.cantidad})</span>
+                    <span>Q${sub.toFixed(2)}</span>
+                </div>`;
+            });
+        }
+        document.getElementById("total-precio").textContent = total.toFixed(2);
+    }
+
+    function comprar() {
+        if (carrito.length === 0) return alert("El carrito está vacío");
+        alert("¡Pedido realizado con éxito! 🚀 El repartidor llegará pronto.");
+        carrito = [];
+        render();
+    }
+
+    function enviar(e) { 
+        e.preventDefault(); 
+        alert("¡Gracias! Mensaje enviado. Nos pondremos en contacto contigo pronto. 📩"); 
+    }
+</script>
+
+</body>
+</html>
